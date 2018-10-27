@@ -28,6 +28,7 @@ namespace DPN\Dmailsubscribe\ViewHelpers;
 use DPN\Dmailsubscribe\Service\SettingsService;
 use TYPO3\CMS\Extbase\Configuration\Exception as ConfigurationException;
 use TYPO3\CMS\Fluid\ViewHelpers\Link\ActionViewHelper;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class AbstractLinkViewHelper
@@ -69,7 +70,7 @@ abstract class AbstractLinkViewHelper extends ActionViewHelper
             'confirmationCode',
             'string',
             'Confirmation code of the subscription to confirm.',
-            true
+            false
         );
     }
 
@@ -99,10 +100,13 @@ abstract class AbstractLinkViewHelper extends ActionViewHelper
         if (null === ($pluginPageUid = $this->settingsService->getSetting('pluginPageUid'))) {
             throw new ConfigurationException('Plugin page Uid is not configured.');
         }
-
+		$confirmationCode = $this->arguments['confirmationCode'];
+		if(confirmationCode == ''){
+			$confirmationCode = GeneralUtility::stdAuthCode($this->arguments['subscriptionUid']);
+		}
         $arguments += [
             'subscriptionUid' => $this->arguments['subscriptionUid'],
-            'confirmationCode' => $this->arguments['confirmationCode'],
+            'confirmationCode' => $confirmationCode,
         ];
 
         return parent::render($this->action, $arguments, 'Subscription', null, null, $pluginPageUid, 0, false, true, '', '', false, [], true);
