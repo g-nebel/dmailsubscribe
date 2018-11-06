@@ -1,0 +1,21 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:d="http://typo3.org/ns/DPN/Dmailsubscribe/ViewHelpers">
+
+<f:layout name="PlainEmail" />
+
+<f:section name="Main">
+<f:translate key="label.unsubcribe"/>
+
+Subsciption List: {subscription.pid}</p>
+
+<f:translate key="label.email"/>: {subscription.email}
+<f:translate key="label.gender"/>: <f:if condition="{subscription.gender}=='m'">{f:translate(key: \'label.gender.male\')}</f:if><f:if condition="{subscription.gender}=='f'">{f:translate(key: \'label.gender.female\')}</f:if><br />
+<f:translate key="label.firstName"/>: {subscription.firstName}
+<f:translate key="label.lastName"/>: {subscription.firstName}
+<f:translate key="label.email"/>: {subscription.email}
+
+<f:translate key="email.notice.unsubscribe"/>
+
+</f:section>
+</html>

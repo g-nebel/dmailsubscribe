@@ -278,6 +278,24 @@ class SubscriptionController extends ActionController
         if (true === $confirmationCodeValid && null !== $subscription) {
             $this->subscriptionRepository->remove($subscription);
             $message = LocalizationUtility::translate('message.unsubscribe.success', $this->extensionName);
+            $listManagerEmail = $this->settingsService->getSetting('listManagerEmail', '');
+            if($listManagerEmail!='') {
+                $listManagerName = $this->settingsService->getSetting('listManagerName', '');
+                $templateVariables = [
+                    'subscription' => $subscription,
+                ];
+
+                /** @var EmailService $emailService */
+                $emailService = $this->objectManager->get(EmailService::class);
+                $emailService->send(
+                    $listManagerEmail,
+                    $listManagerName,
+                    'NoticeUnsubscription',
+                    true,
+                    $templateVariables
+                );
+            }
+
             $this->addFlashMessage($message);
             $this->redirect('message');
         }

@@ -26,5 +26,7 @@ plugin.tx_dmailsubscribe {
         subject = {$plugin.tx_dmailsubscribe.settings.subject}
         pluginPageUid = {$plugin.tx_dmailsubscribe.settings.pluginPageUid}
         unsubscribePageUid = {$plugin.tx_dmailsubscribe.settings.unsubscribePageUid}
+        listManagerEmail = {$plugin.tx_dmailsubscribe.settings.listManagerEmail}
+        listManagerName = {$plugin.tx_dmailsubscribe.settings.listManagerName}
     }
 }

@@ -36,5 +36,9 @@ plugin.tx_dmailsubscribe {
         pluginPageUid =
         # cat=plugin.tx_dmailsubscribe//a; type=string; Label=UID of dedicated unsubscribe page (needs to contain the plugin, defaults to pluginPageUid)
         unsubscribePageUid =
+        # cat=plugin.tx_dmailsubscribe//a; type=string; Label=Email of mailing list manager (if not empty List Manager receives mails about unsubscrition )
+        listManagerEmail =
+        # cat=plugin.tx_dmailsubscribe//a; type=string; Label=Name of mailing list manager
+        listManagerName =
     }
 }

@@ -101,6 +101,9 @@
             <trans-unit id="message.unsubscribe.success">
                 <source>You have been successfully unsubscribed from our newsletter.</source>
             </trans-unit>
+            <trans-unit id="message.notice.unsubscribe">
+                <source>has unsubscribed from our newsletter.</source>
+            </trans-unit>
             <trans-unit id="email.greeting">
                 <source>Success</source>
             </trans-unit>
